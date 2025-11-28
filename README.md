@@ -24,8 +24,8 @@ Implement a complete deep regression solution using PyTorch to predict the **clo
 - Closing price almost always lies between the daily high and low
 - Multimodal but continuous distribution of closing prices
 ![time series plot](images/diag1.png)
-(Screenshots to insert: time series plot, correlation heatmap, close price histogram)
-
+![correlation heatmap](images/diag2.png)
+![close price histogram](images/diag3.png)
 ---
 
 ### 4. Preprocessing
