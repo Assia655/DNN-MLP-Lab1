@@ -23,7 +23,7 @@ Implement a complete deep regression solution using PyTorch to predict the **clo
 - Extremely high correlation (> 0.999) between `close` and `open`, `high`, `low`
 - Closing price almost always lies between the daily high and low
 - Multimodal but continuous distribution of closing prices
-![time series plot](images/loss_curves.png)
+![time series plot](images/diag1.png)
 (Screenshots to insert: time series plot, correlation heatmap, close price histogram)
 
 ---
