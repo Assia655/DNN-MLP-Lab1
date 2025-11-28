@@ -111,10 +111,7 @@ An average error of **63 cents** on stocks ranging from $1 to $1,600 is outstand
 | Best Model (GridSearch)                   | 0.999940  | $0.6342     | 6.09e-05   | None (dropout=0, batchnorm=False, wd=0)    |
 | Simple Model (no regularization)          | 0.999940  | $0.6340     | 6.16e-05   | None                                       |
 
-**Conclusion**:  
-Performance is **strictly identical** with or without regularization.  
-**Reason**: The task is extremely easy due to near-perfect correlation (> 0.9999) between inputs (`open`, `high`, `low`) and target (`close`). The network learns the relationship almost instantly → **zero overfitting risk**.  
-Regularization techniques (dropout, batch normalization, weight decay) bring **no improvement** in this case.
+
 
 
 
@@ -153,14 +150,11 @@ The dataset contains sensor readings and operational metrics from industrial mac
 ### Step 2: Exploratory Data Analysis (EDA)
 
 **Class Distribution Chart (Before SMOTE):**
-```
-[INSERT SCREENSHOT: Class Distribution Bar Chart]
-```
 
-**Feature Correlation Heatmap:**
-```
-[INSERT SCREENSHOT: Correlation Matrix]
-```
+![ Regularization](images/diag9.png)
+
+
+![ Regularization](images/diag99.png)
 
 Key Insights: Strong imbalance between failure and non-failure classes. Features show moderate correlations with process conditions.
 
@@ -203,14 +197,9 @@ Tested **216 different configurations** using ParameterGrid to find optimal hype
 ### Step 6: Training Dynamics & Visualization
 
 **Loss vs Epochs (Best Model):**
-```
-[INSERT SCREENSHOT: Loss Curve]
-```
 
 **Accuracy vs Epochs (Best Model):**
-```
-[INSERT SCREENSHOT: Accuracy Curve]
-```
+![ Regularization](images/diag11.png)
 
 **Key Observations:**
 - Training loss converges rapidly (first 5 epochs)
@@ -246,9 +235,7 @@ Accuracy                                0.9600     1500
 ```
 
 **Confusion Matrix (Test Set):**
-```
-[INSERT SCREENSHOT: Confusion Matrix Heatmap]
-```
+![ Regularization](images/diag10.png)
 
 **Interpretation:**
 - High accuracy in predicting No Failure (99.36% precision)
@@ -275,41 +262,6 @@ Compared the best model (WITH regularization) against a baseline WITHOUT regular
 
 ---
 
-## Results Summary
-
-✅ **Test Accuracy: 96.00%**  
-✅ **Failure Detection Recall: 82.35%**  
-✅ **No Failure Precision: 99.36%**  
-✅ **Early Stopping: Epoch 23/30**  
-
-### Model Strengths
-- Excellent at identifying machines with no failure (high precision)
-- Good at catching actual failures (good recall)
-- Stable training dynamics without overfitting
-- Generalizes well to unseen test data
-
-### Model Limitations
-- Lower precision for failure class (45.16%) - some false positives
-- SMOTE may introduce synthetic artifacts, but benefits outweigh risks
-- Limited to binary classification (could extend to multi-failure types)
-
----
-
-## Key Learnings
-
-1. **Data Imbalance:** SMOTE successfully balanced classes and improved model robustness
-2. **Architecture:** Deeper networks [256,128,64] outperformed shallow architectures
-3. **Regularization:** Mild regularization (dropout=0.1, wd=0.0005) optimal for this task
-4. **Learning Rate:** 0.005 proved better than 0.001 or 0.01 for convergence speed
-5. **Early Stopping:** Essential to prevent overfitting; triggered at epoch 23
-
----
-
-## Files Generated
-
-- `models/best_pm_model.pth` - Trained model weights
-- `models/scaler_pm.save` - StandardScaler for inference
-- `models/label_encoder_pm.save` - Label encoder for classes
 
 ---
 
